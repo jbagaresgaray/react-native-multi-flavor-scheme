@@ -1,4 +1,4 @@
-package com.reactnativemultiflavorscheme;
+package com.purplme.multiflavorscheme;
 
 import com.facebook.react.ReactActivity;
 

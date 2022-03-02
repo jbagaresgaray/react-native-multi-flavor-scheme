@@ -4,6 +4,12 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "android-dev": "react-native run-android --variant=devDebug --appIdSuffix=dev",
+    "android-stg": "react-native run-android --variant=stgDebug --appIdSuffix=stg",
+    "android-prod": "react-native run-android --variant=prodDebug",
+    "build-dev": "cd android && ./gradlew assembleDevRelease",
+    "build-stg": "cd android && ./gradlew assembleStgRelease",
+    "build-prod": "cd android && ./gradlew assembleProdRelease",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
@@ -11,7 +17,8 @@
   },
   "dependencies": {
     "react": "17.0.2",
-    "react-native": "0.67.1"
+    "react-native": "0.67.1",
+    "react-native-config": "^1.4.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

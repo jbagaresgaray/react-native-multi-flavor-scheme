@@ -1,4 +1,4 @@
-package com.reactnativemultiflavorscheme;
+package com.purplme.multiflavorscheme;
 
 import android.app.Application;
 import android.content.Context;
