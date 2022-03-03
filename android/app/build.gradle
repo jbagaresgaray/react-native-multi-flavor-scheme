@@ -1,4 +1,11 @@
 apply plugin: "com.android.application"
+
+project.ext.envConfigFiles = [
+    dev: ".env.dev",
+    staging: ".env.staging",
+    prod: ".env.prod",
+]
+
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 import com.android.build.OutputFile
@@ -80,12 +87,6 @@ import com.android.build.OutputFile
 
 project.ext.react = [
     enableHermes: false,  // clean and rebuild if changing
-]
-
-project.ext.envConfigFiles = [
-    dev: ".env.dev",
-    staging: ".env.staging",
-    prod: ".env.prod",
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -200,14 +201,16 @@ android {
         dev {
             // applicationId 'com.purplme.multiflavorscheme.dev'
             applicationIdSuffix ".dev"
-            resValue "string", "build_config_package", "com.purplme"
+            versionNameSuffix "-dev"
+            resValue "string", "build_config_package", "com.purplme.multiflavorscheme"
+        }
+        staging {
+            applicationIdSuffix ".staging"
+            versionNameSuffix "-stg"
+            resValue "string", "build_config_package", "com.purplme.multiflavorscheme"
         }
         prod {
-            applicationIdSuffix ".stg"
-            resValue "string", "build_config_package", "com.purplme"
-        }
-        stg {
-            resValue "string", "build_config_package", "com.purplme"
+            resValue "string", "build_config_package", "com.purplme.multiflavorscheme"
         }
     }
 }
@@ -216,6 +219,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation project(':react-native-config')
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
