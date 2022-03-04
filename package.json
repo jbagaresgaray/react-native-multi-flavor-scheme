@@ -17,6 +17,9 @@
     "build-stg-win": "cd android && SET ENVFILE=.env.staging && ./gradlew assembleStagingRelease",
     "build-prod-win": "cd android && SET ENVFILE=.env.prod && ./gradlew assembleProdRelease",
     "ios": "react-native run-ios",
+    "ios-dev": "ENVFILE=.env.dev && react-native run-ios --scheme ReactNativeMultiFlavorScheme-Dev --configuration DebugDev",
+    "ios-stg": "ENVFILE=.env.staging && react-native run-ios --scheme ReactNativeMultiFlavorScheme-STG  --configuration DebugStaging",
+    "ios-prod": "ENVFILE=.env.prod && react-native run-ios --scheme ReactNativeMultiFlavorScheme  --configuration Debug",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint ."
